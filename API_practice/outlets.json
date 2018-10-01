@@ -1,0 +1,150 @@
+{
+	"content": {
+		"everything": [
+			{
+				"sourceName": "Hannity",
+				"conservative": 78, 
+				"moderate": 13, 
+				"liberal": 5
+			},
+			{
+				"sourceName": "Rush Limbaugh",
+				"conservative": 71, 
+				"moderate": 17, 
+				"liberal": 9
+			},
+			{
+				"sourceName": "O'Reilly Factor",
+				"conservative": 69, 
+				"moderate": 16, 
+				"liberal": 8
+			},
+			{
+				"sourceName": "Fox News",
+				"conservative": 60, 
+				"moderate": 23, 
+				"liberal": 10
+			},
+			{
+				"sourceName": "News Blogs",
+				"conservative": 41, 
+				"moderate": 34, 
+				"liberal": 20
+			},
+			{
+				"sourceName": "Local TV news",
+				"conservative": 40, 
+				"moderate": 34, 
+				"liberal": 19
+			},
+			{
+				"sourceName": "Daily newspaper",
+				"conservative": 40, 
+				"moderate": 33, 
+				"liberal": 22
+			},
+			{
+				"sourceName": "Daytime talk",
+				"conservative": 39, 
+				"moderate": 27, 
+				"liberal": 27
+			},
+			{
+				"sourceName": "Network evening",
+				"conservative": 38, 
+				"moderate": 41, 
+				"liberal": 16
+			},
+			{
+				"sourceName": "Morning news",
+				"conservative": 35, 
+				"moderate": 37, 
+				"liberal": 22
+			},
+			{
+				"sourceName": "Sunday shows",
+				"conservative": 34, 
+				"moderate": 37, 
+				"liberal": 24
+			},
+						{
+				"sourceName": "USA Today",
+				"conservative": 33, 
+				"moderate": 40, 
+				"liberal": 22
+			},
+			{
+				"sourceName": "The Economist",
+				"conservative": 33, 
+				"moderate": 39, 
+				"liberal": 23
+			},
+			{
+				"sourceName": "Wall Street Journal",
+				"conservative": 32, 
+				"moderate": 41, 
+				"liberal": 21
+			},
+						{
+				"sourceName": "CNN",
+				"conservative": 32, 
+				"moderate": 30, 
+				"liberal": 30
+			},
+			{
+				"sourceName": "MSNBC",
+				"conservative": 32, 
+				"moderate": 23, 
+				"liberal": 36
+			},
+			{
+				"sourceName": "News magazines",
+				"conservative": 29, 
+				"moderate": 39, 
+				"liberal": 28
+			},
+						{
+				"sourceName": "New York Times",
+				"conservative": 22, 
+				"moderate": 35, 
+				"liberal": 36
+			},
+			{
+				"sourceName": "NPR",
+				"conservative": 21, 
+				"moderate": 39, 
+				"liberal": 36
+			},
+			{
+				"sourceName": "The New Yorker",
+				"conservative": 19, 
+				"moderate": 34, 
+				"liberal": 41
+			},
+						{
+				"sourceName": "Hardball",
+				"conservative": 19, 
+				"moderate": 25, 
+				"liberal": 48
+			},
+			{
+				"sourceName": "The Daily Show",
+				"conservative": 14, 
+				"moderate": 42, 
+				"liberal": 43
+			},
+			{
+				"sourceName": "The Colbert Report",
+				"conservative": 14, 
+				"moderate": 42, 
+				"liberal": 40
+			},
+			{
+				"sourceName": "Rachel Maddow",
+				"conservative": 7, 
+				"moderate": 31, 
+				"liberal": 57
+			}
+		]
+	}
+}

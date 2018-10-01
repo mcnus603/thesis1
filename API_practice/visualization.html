@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API Practice</title>
+
+	<style>
+
+	#wrapper{
+
+	}
+
+	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+
+	<div id = "wrapper">
+		<form>
+			Subject <br/>
+			<input type="text" id="input_id"> 
+	</form>
+	<button id ="theButton">Submit</button>
+
+	</div>
+
+
+
+
+	<script type="text/javascript">
+
+
+		var apiKey = "35f54b0bb2fa46fcbe69c3a23665de5c";
+		var aSubject = "kavanuagh";
+
+		function runAPIRequest(subject) {
+			var articleTitles = [];
+			var sources = [];
+			$.ajax({
+				url: 'https://newsapi.org/v2/everything?q='+subject+'&apiKey=' + apiKey,
+				success: function(results) {
+					for(var i = 0; i < results.articles.length; i++) {
+						var title = results.articles[i].title;
+						articleTitles.push(title);
+
+						var source = results.articles[i].source.name;
+						sources.push(source);
+					}
+				console.log(sources);
+				createArticleDivs(articleTitles, sources);
+
+				}
+			});
+		}
+
+		function createArticleDivs(title, sources) {
+			for (var i = 0; i < title.length; i++) {
+				var cont = document.createElement("div");
+				cont.className = "container";
+
+				var outlet = sources[i];
+				outlet.style = "strong";
+				var text = title[i];
+				window.alert(title[i] + "  -" + outlet  );
+			}
+		}
+
+		var entry = document.getElementById("theButton");
+
+		entry.addEventListener("click", function(){
+			var input = document.getElementById("input_id").value;
+			runAPIRequest(input);
+
+		});
+
+
+		//give me top 10 articles with search word "kavanuagh" 
+		//create a bunch of pop up windows? 
+		//something to do with type of news outlet
+
+
+	</script>
+
+
+</body>
+</html>

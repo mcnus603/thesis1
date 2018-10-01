@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API Practice</title>
+
+	<style>
+	.article{
+		width: 300px;
+		font-family: helvetica;
+		font-size: 24px;
+	}
+
+	.source{
+		width: 300px;
+		font-family: helvetica;
+		font-size: 10px;
+
+	}
+
+	.container{
+	margin-bottom: 15px;
+	margin-right: 30px;
+	display:inline-block;
+
+	
+	}
+
+	#wrapper {
+		width: 90vw;
+		margin-left: 10vw;
+	}
+
+	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+	<form>
+			Subject <br/>
+			<input type="text" id="input_id"> 
+	</form>
+	<button id ="theButton">Submit</button>
+
+
+	<div id = "wrapper">
+
+
+
+	</div>
+
+
+
+
+	<script type="text/javascript">
+
+
+		var apiKey = "35f54b0bb2fa46fcbe69c3a23665de5c";
+		var aSubject = "trump";
+		var wrapper = document.getElementById("wrapper");
+		var articleTitles = [];
+		var sources = [];
+
+		function runAPIRequest(subject) {
+
+			$.ajax({
+				url: 'https://newsapi.org/v2/everything?q='+subject+'&apiKey=' + apiKey,
+				success: function(results) {
+					// console.log(results.articles);
+					for(var i = 0; i < results.articles.length; i++) {
+						var title = results.articles[i].title;
+						articleTitles.push(title);
+
+						var source = results.articles[i].source.name;
+						sources.push(source);
+					}
+				console.log(sources);
+				createArticleDivs(articleTitles, sources);
+
+				}
+			});
+		}
+
+		function createArticleDivs(title, sources) {
+			for (var i = 0; i < title.length; i++) {
+				var cont = document.createElement("div");
+				cont.className = "container";
+
+				var outlet = sources[i];
+				var elem = document.createElement("alert");
+				elem.className = "source";
+				elem.innerHTML = outlet;
+				cont.appendChild(elem);
+
+				var text = title[i];
+				var el = document.createElement("div");
+				el.innerHTML = text;
+				el.className = "article";
+				cont.appendChild(el);
+
+				wrapper.appendChild(cont);
+			}
+		}
+
+		var entry = document.getElementById("theButton");
+
+		entry.addEventListener("click", function(){
+			//clear what was before
+			if(articleTitles.length > 0) {
+				for(var i = articleTitles; i > 0; i--) {
+					var article = articleTitles[i];
+					var source = sources[i];
+					articleTitles.splice(i);
+					sources.splice(i);
+				}
+			}
+
+
+			var input = document.getElementById("input_id").value;
+			runAPIRequest(input);
+
+		});
+
+	</script>
+
+
+</body>
+</html>

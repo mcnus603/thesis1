@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>News Outlets</title>
+	<style>
+		#wrapper {
+			width: 80vw;
+			margin-left: 10vw;
+		
+			height: 100vh;
+		}
+
+		#header{
+			/*width: 80vw;*/
+		}
+
+		.menu{
+			display: inline-block;
+			margin-left: 40px;
+			font-size: 20px;
+		}
+
+		.block{
+			display: inline-block;
+			background-color: black;
+			color: white;
+			text-align: center;
+			top:50;
+			/*left:50;*/
+	/*		transform: translate(-50, -50);*/
+			width: 150px;
+			height: 150px;
+			margin: 10px;
+
+		}
+
+		.menu:hover{
+			text-decoration: underline;
+		}
+
+
+
+	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+
+	<div id ="wrapper">
+		<div id = "header">
+			<div id = "liberal" class="menu">
+				Liberal
+			</div>
+			<div id = "moderate" class="menu">
+				Moderate
+			</div>
+			<div id = "conservative" class="menu">
+				Conservative
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		var wrapper = document.getElementById("wrapper");
+		var allTheData = [];
+		var sources = [];
+		var consStats = [];
+		var modStats = [];
+		var libStats =[];
+		var liberal = document.getElementById("liberal");
+		var moderate = document.getElementById("moderate");
+		var conservative = document.getElementById("conservative");
+		var allTheEls = [];
+		var red = "#EF3535";
+		var blue = "#3535EF";
+		var purple = "#65208E";
+		var showing;
+
+		liberal.style.color = blue;
+		conservative.style.color = red;
+		moderate.style.color = purple;
+
+		$.getJSON("outlets.json", function(data){
+			allTheData = data.content.everything;
+			console.log(allTheData);
+
+			parseArrays(allTheData);
+		});
+
+		function parseArrays(array){
+
+			for(var i =0; i < array.length; i++) {
+				var source = array[i].sourceName;
+				sources.push(source);
+
+				var cons = array[i].conservative;
+				consStats.push(cons);
+
+				var mod = array[i].moderate;
+				modStats.push(mod);
+
+				var lib = array[i].liberal;
+				libStats.push(lib);
+			}
+
+			createBlocks();
+		}
+
+		function createBlocks() {
+			for(var i =0; i < sources.length; i++) {
+				var el = document.createElement("div");
+				el.className = "block"; 
+				el.innerHTML = sources[i];
+				wrapper.appendChild(el);
+				allTheEls.push(el);
+			}
+		}
+
+	function listeners() {
+		liberal.addEventListener("click", changeColorsLib);
+		conservative.addEventListener("click", changeColorsCons);
+		moderate.addEventListener("click",changeColorsMod);
+	}
+
+	function aClick() {
+
+		console.log(this);
+		var input = this.innerHtml;
+
+		if(input == "liberal") {
+			showing = "liberal"
+			changeColors(libStats, blue);
+		}else if (input =="conservative") {
+			showing = "Conservative";
+			changeColors(consStats, red);
+		} else if(input == "moderate") {
+			showing = "moderate"
+			changeColors(modStats, purple);
+		}
+	}
+
+	function changeColors(array, color) {
+		console.log(array);
+		for(var i=0; i < array.length; i++) {
+			var el = allTheEls[i];
+			var a = array[i]/100;
+
+			el.style.backgroundColor = color;
+			el.style.opacity = a;
+		}
+	}
+
+	function changeColorsLib() {
+		for(var i=0; i < libStats.length; i++) {
+			var el = allTheEls[i];
+			var a = libStats[i]/80;
+
+			el.style.backgroundColor = blue;
+			el.style.opacity = a;
+		}
+	}
+
+	function changeColorsCons() {
+		for(var i=0; i < consStats.length; i++) {
+			var el = allTheEls[i];
+			var a = consStats[i]/80;
+
+			el.style.backgroundColor = red;
+			el.style.opacity = a;
+		}
+	}
+
+		function changeColorsMod() {
+		for(var i=0; i < modStats.length; i++) {
+			var el = allTheEls[i];
+			var a = modStats[i]/80;
+
+			el.style.backgroundColor = purple;
+			el.style.opacity = a;
+		}
+	}
+
+
+
+	listeners();
+
+
+	</script>
+</body>
+</html>
